@@ -2,7 +2,6 @@
   <!-- Vue conditional to check if there is any content in document -->
   <div v-if="hasContent" class="page">
     <div class="home">
-     hello welcome
      <h1 class="blog-title">
         {{ $prismic.richTextAsPlain(fields.headline) }}
       </h1>
