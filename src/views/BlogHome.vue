@@ -3,6 +3,11 @@
   <div v-if="hasContent" class="page">
     <div class="home">
      hello welcome
+     <h1 class="blog-title">
+        {{ $prismic.richTextAsPlain(fields.headline) }}
+      </h1>
+      <!-- Template for page description -->
+      <p class="blog-description">{{ $prismic.richTextAsPlain(fields.description) }}</p>
     </div>
     <!-- Vue reference for blog posts component -->
     <blog-posts/>
@@ -40,14 +45,22 @@ export default {
       this.$prismic.client.getSingle('presentation')
         .then((document) => {
           if (document) {
-            this.name = document.name
-            debugger
+            this.fields.headline = document.data.name
+            this.fields.description = document.data.decription_site
+            this.checkForContent()
 
           } else {
             //returns error page
             this.$router.push({ name: 'not-found' })
           }
         })
+    },    checkForContent(){
+      if (
+        this.$prismic.richTextAsPlain(this.fields.headline) !== "" ||
+        this.$prismic.richTextAsPlain(this.fields.description) !== ""
+      ) {
+        this.hasContent = true;
+      }
     },
   },
   created () {
