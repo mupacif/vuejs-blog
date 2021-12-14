@@ -20,19 +20,9 @@ export default new Router({
       component: BlogHome
     },
     {
-      path: '/blog/:uid',
-      name: 'post',
-      component: Post
-    },
-    {
       path: '/not-found',
       name: 'not-found',
       component: NotFound
-    },
-    {
-      path: '/preview',
-      name: 'preview',
-      component: Preview
     },
     {
       path: '*',
