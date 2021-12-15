@@ -27,7 +27,6 @@ export default {
   methods: {
     getContent (uid) {
       //Query to get post content
- 
       this.$prismic.client.getByUID('section', uid)
         .then((doc) => {
 
