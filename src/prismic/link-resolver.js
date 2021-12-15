@@ -10,11 +10,11 @@ export default function (doc) {
   }
 
   if (doc.type === 'blog_home') {
-    return 'blog'
+    return 'vuejs-blog'
   }
 
   if (doc.type === 'section') {
-    return 'blog/' + doc.uid
+    return 'vuejs-blog/' + doc.uid
   }
 
   return 'not-found'
