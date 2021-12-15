@@ -5,11 +5,11 @@
           <h6 class="blog-title">
             {{ $prismic.richTextAsPlain(fields.headline) }}
           </h6>
-          <!-- Template for page description -->
-          <p class="blog-description">{{ $prismic.richTextAsPlain(fields.description) }}</p>
+          <!-- Template for page description
+          <p class="blog-description">{{ $prismic.richTextAsPlain(fields.description) }}</p> -->
 
           <div v-for="post in sections" :key="post.id" v-bind:post="post" class="blog-post" >
-             <router-link :to="linkResolver(post)">{{ $prismic.richTextAsPlain(post.data.name) }} </router-link>
+            > <router-link :to="linkResolver(post)">{{ $prismic.richTextAsPlain(post.data.name) }} </router-link>
           </div>
     </div>
     <div class="home">
@@ -22,7 +22,7 @@
   </div>
   <!-- If no content return message -->
   <div v-else class="home">
-    <p> Please add some content to your blog home document.</p>
+    <p> welcome </p>
   </div>
 </template>
 
