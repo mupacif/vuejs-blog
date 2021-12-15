@@ -9,24 +9,23 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
-  base: '/vuejs-blog',
   routes: [
     {
       path: '/',
       redirect: { name: 'blog-home' }
     },
     {
-      path: '/blog',
+      path: 'blog',
       name: 'blog-home',
       component: Welcome
     },
     {
-      path: '/blog/:uid',
+      path: 'blog/:uid',
       name: 'carousel',
       component: Carousel
     },
     {
-      path: '/not-found',
+      path: 'not-found',
       name: 'not-found',
       component: NotFound
     },
