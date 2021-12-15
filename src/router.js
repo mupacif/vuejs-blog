@@ -25,7 +25,7 @@ export default new Router({
       component: Carousel
     },
     {
-      path: '/not-found',
+      path: '/vuejs-blog/not-found',
       name: 'not-found',
       component: NotFound
     },
