@@ -15,17 +15,17 @@ export default new Router({
       redirect: { name: 'blog-home' }
     },
     {
-      path: 'blog',
+      path: '/vuejs-blog',
       name: 'blog-home',
       component: Welcome
     },
     {
-      path: 'blog/:uid',
+      path: '/vuejs-blog/:uid',
       name: 'carousel',
       component: Carousel
     },
     {
-      path: 'not-found',
+      path: '/vuejs-blog/not-found',
       name: 'not-found',
       component: NotFound
     },
