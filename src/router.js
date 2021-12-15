@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import NotFound from './views/NotFound.vue'
 import Carousel from './views/Carousel.vue'
-import BlogHome from './views/BlogHome.vue'
+import Welcome from './views/Welcome.vue'
 
 
 Vue.use(Router)
@@ -17,7 +17,7 @@ export default new Router({
     {
       path: '/blog',
       name: 'blog-home',
-      component: BlogHome
+      component: Welcome
     },
     {
       path: '/blog/:uid',
@@ -35,6 +35,6 @@ export default new Router({
     }
   ],
   scrollBehavior () {
-    return { x: 0, y: 0 }
+    return { x: 0, y: 50 }
   }  
 })

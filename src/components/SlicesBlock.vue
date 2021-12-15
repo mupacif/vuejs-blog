@@ -19,6 +19,8 @@ export default {
   name: 'slices-block',
   components: {
     ImageSliderSlice
+  },create(){
+    debugger 
   }
 }
 </script>

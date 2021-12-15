@@ -4,7 +4,7 @@
  */
 
 export default function (doc) {
-  debugger
+
   if (doc.isBroken) {
     return '/not-found'
   }
@@ -14,7 +14,7 @@ export default function (doc) {
   }
 
   if (doc.type === 'section') {
-    return '/blog/' + doc.id
+    return '/blog/' + doc.uid
   }
 
   return '/not-found'

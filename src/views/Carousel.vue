@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <slices-block :slices="slices"/>
+ <slices-block :slices="slices"/>
   </div>
 </template>
 
@@ -27,11 +27,13 @@ export default {
   methods: {
     getContent (uid) {
       //Query to get post content
+ 
       this.$prismic.client.getByUID('section', uid)
-        .then((document) => {
-          if (document) {
-    
-            this.slices = document.data.body
+        .then((doc) => {
+
+          if (doc) {
+        
+            this.slices = doc.data.body
           } 
           else {
             //returns error page

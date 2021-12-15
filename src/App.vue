@@ -1,14 +1,18 @@
 <template>
   <div id="app">
-    <router-view/>
+
+ <BlogHome />
 
   </div>
 </template>
 
 <script>
-
+import BlogHome from './views/BlogHome.vue'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    BlogHome
+  }
 }
 </script>
 

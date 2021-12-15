@@ -13,8 +13,8 @@
           </div>
     </div>
     <div class="home">
-     
-              <slices-block :slices="sect"/>
+    
+    <router-view :key="$route.fullPath" />
 
     </div>
     <!-- Vue reference for blog posts component -->
@@ -49,10 +49,7 @@ export default {
     }
   },
   methods: {
-    selectSec(post){
-      debugger
-        this.sect = post.data.body
-    },
+
     getSections (){
         this.$prismic.client.query(
                 this.$prismic.Predicates.not('document.type', "presentation")
@@ -91,6 +88,14 @@ export default {
 </script>
 
 <style scoped>
+.page{
+  display:flex;
+  flex-orientation : horizontal;
+}
+
+.left-menu{
+  min-width : 300px;
+}
 .home {
   max-width: 100%;
   margin: auto;
