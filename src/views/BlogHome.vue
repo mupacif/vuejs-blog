@@ -1,15 +1,24 @@
 <template>
   <!-- Vue conditional to check if there is any content in document -->
   <div v-if="hasContent" class="page">
+    <div class="left-menu"> 
+          <h6 class="blog-title">
+            {{ $prismic.richTextAsPlain(fields.headline) }}
+          </h6>
+          <!-- Template for page description -->
+          <p class="blog-description">{{ $prismic.richTextAsPlain(fields.description) }}</p>
+
+          <div v-for="post in sections" :key="post.id" v-bind:post="post" class="blog-post">
+             {{ $prismic.richTextAsPlain(post.data.name) }}
+          </div>
+    </div>
     <div class="home">
-     <h1 class="blog-title">
-        {{ $prismic.richTextAsPlain(fields.headline) }}
-      </h1>
-      <!-- Template for page description -->
-      <p class="blog-description">{{ $prismic.richTextAsPlain(fields.description) }}</p>
+        <div v-for="post in sections" :key="post.id" v-bind:post="post" class="blog-post">
+             {{ $prismic.richTextAsPlain(post.data.name) }}
+          </div>
     </div>
     <!-- Vue reference for blog posts component -->
-    <blog-posts/>
+ 
   </div>
   <!-- If no content return message -->
   <div v-else class="home">
@@ -27,6 +36,7 @@ export default {
   },
   data () {
     return {
+      sections: [],
       documentId: '',
       fields: {
         headline: null,
@@ -39,6 +49,14 @@ export default {
     }
   },
   methods: {
+    getSections (){
+        this.$prismic.client.query(
+                this.$prismic.Predicates.not('document.type', "presentation")
+            ).then((response) => {
+              debugger
+              this.sections = response.results;
+            })
+    },
     getContent () {
       //Query to get home content
       this.$prismic.client.getSingle('presentation')
@@ -64,13 +82,14 @@ export default {
   },
   created () {
     this.getContent()
+    this.getSections ()
   }
 }
 </script>
 
 <style scoped>
 .home {
-  max-width: 700px;
+  max-width: 100%;
   margin: auto;
   text-align: center;
 }
