@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import NotFound from './views/NotFound.vue'
-
+import Carousel from './views/Carousel.vue'
 import BlogHome from './views/BlogHome.vue'
 
 
@@ -18,6 +18,11 @@ export default new Router({
       path: '/blog',
       name: 'blog-home',
       component: BlogHome
+    },
+    {
+      path: '/blog/:uid',
+      name: 'carousel',
+      component: Carousel
     },
     {
       path: '/not-found',

@@ -8,14 +8,14 @@
           <!-- Template for page description -->
           <p class="blog-description">{{ $prismic.richTextAsPlain(fields.description) }}</p>
 
-          <div v-for="post in sections" :key="post.id" v-bind:post="post" class="blog-post">
-             {{ $prismic.richTextAsPlain(post.data.name) }}
+          <div v-for="post in sections" :key="post.id" v-bind:post="post" class="blog-post" >
+             <router-link :to="linkResolver(post)">{{ $prismic.richTextAsPlain(post.data.name) }} </router-link>
           </div>
     </div>
     <div class="home">
-        <div v-for="post in sections" :key="post.id" v-bind:post="post" class="blog-post">
-             {{ $prismic.richTextAsPlain(post.data.name) }}
-          </div>
+     
+              <slices-block :slices="sect"/>
+
     </div>
     <!-- Vue reference for blog posts component -->
  
@@ -27,15 +27,15 @@
 </template>
 
 <script>
-import BlogPosts from '../components/BlogPosts.vue'
-
+import SlicesBlock from '../components/SlicesBlock.vue'
 export default {
   name: 'blog-home',
   components: {
-    BlogPosts
+    SlicesBlock
   },
   data () {
     return {
+      sect:'',
       sections: [],
       documentId: '',
       fields: {
@@ -49,11 +49,14 @@ export default {
     }
   },
   methods: {
+    selectSec(post){
+      debugger
+        this.sect = post.data.body
+    },
     getSections (){
         this.$prismic.client.query(
                 this.$prismic.Predicates.not('document.type', "presentation")
             ).then((response) => {
-              debugger
               this.sections = response.results;
             })
     },
