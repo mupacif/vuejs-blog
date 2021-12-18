@@ -10,8 +10,7 @@
 
 <script>
 // Imports for all slices
-const ImageSliderSlice = () => import("../components/slices/ImageSliderSlice.vue");
-
+import ImageSliderSlice from './slices/ImageSliderSlice.vue'
 
 export default {
   props: ['slices'],

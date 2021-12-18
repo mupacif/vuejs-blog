@@ -5,29 +5,28 @@
   
           <!-- Template for page description
           <p class="blog-description">{{ $prismic.richTextAsPlain(fields.description) }}</p> -->
-          <nav class="navbar navbar-expand-sm ">
-                <div class="container flex-column">
+          <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+                <div class="container-fluid  flex-column">
                      <router-link to="/"  class="navbar-brand"> {{ $prismic.richTextAsPlain(fields.headline) }}</router-link>
-                    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                      <span class="navbar-toggle-icon"></span>
+                    <button class="navbar-toggler" 
+                    type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
-                      <ul class="navbar-nav ml-auto flex-column">
+                      <ul class="navbar-nav ml-auto  flex-column">
                         <li class="nav-item" v-for="post in sections" :key="post.id" v-bind:post="post">
                           <router-link  class="nav-link" :to="linkResolver(post)">{{ $prismic.richTextAsPlain(post.data.name) }} </router-link>
                         </li>
                       </ul>  
                     </div>
-                  </div>
+                </div>
           </nav> 
-          <div class="home">
-            <div class="container">
-              <router-view :key="$route.fullPath" />
-            </div>
+          <div class="home container">  
+                <router-view  :key="$route.fullPath" />    
         </div>    
     </div>
     <div v-else class="home">
-       <p> welcome </p>
+       <p> welcome xx </p>
     </div>
   </div>
   <!-- If no content return message -->
@@ -97,10 +96,16 @@ export default {
 
 <style scoped>
 .page{
-  display:flex;
-  flex-direction : horizontal;
-}
 
+}
+#sidebar {
+
+    width: 250px;
+   
+    height: 100vh;
+    z-index: 999;
+    transition: all 0.3s;
+}
 .left-menu{
   min-width : 300px;
 }
