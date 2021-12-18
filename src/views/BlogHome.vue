@@ -1,29 +1,37 @@
 <template>
+  <div class="home">
   <!-- Vue conditional to check if there is any content in document -->
   <div v-if="hasContent" class="page">
-    <div class="left-menu"> 
-          <h6 class="blog-title">
-            {{ $prismic.richTextAsPlain(fields.headline) }}
-          </h6>
+  
           <!-- Template for page description
           <p class="blog-description">{{ $prismic.richTextAsPlain(fields.description) }}</p> -->
-
-          <div v-for="post in sections" :key="post.id" v-bind:post="post" class="blog-post" >
-            > <router-link :to="linkResolver(post)">{{ $prismic.richTextAsPlain(post.data.name) }} </router-link>
-          </div>
+          <nav class="navbar navbar-expand-sm ">
+                <div class="container flex-column">
+                     <router-link to="/"  class="navbar-brand"> {{ $prismic.richTextAsPlain(fields.headline) }}</router-link>
+                    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                      <span class="navbar-toggle-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                      <ul class="navbar-nav ml-auto flex-column">
+                        <li class="nav-item" v-for="post in sections" :key="post.id" v-bind:post="post">
+                          <router-link  class="nav-link" :to="linkResolver(post)">{{ $prismic.richTextAsPlain(post.data.name) }} </router-link>
+                        </li>
+                      </ul>  
+                    </div>
+                  </div>
+          </nav> 
+          <div class="home">
+            <div class="container">
+              <router-view :key="$route.fullPath" />
+            </div>
+        </div>    
     </div>
-    <div class="home">
-    
-    <router-view :key="$route.fullPath" />
-
+    <div v-else class="home">
+       <p> welcome </p>
     </div>
-    <!-- Vue reference for blog posts component -->
- 
   </div>
   <!-- If no content return message -->
-  <div v-else class="home">
-    <p> welcome </p>
-  </div>
+ 
 </template>
 
 <script>
@@ -90,7 +98,7 @@ export default {
 <style scoped>
 .page{
   display:flex;
-  flex-orientation : horizontal;
+  flex-direction : horizontal;
 }
 
 .left-menu{

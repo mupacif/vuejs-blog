@@ -2,7 +2,6 @@
     <section>
         <!-- Slice section template -->
         <section v-for="(slice, index) in slices" :key="'slice-' + index">
-           
                 <image-slider-slice :slices="slice"></image-slider-slice>
        
         </section>
@@ -19,8 +18,8 @@ export default {
   name: 'slices-block',
   components: {
     ImageSliderSlice
-  },create(){
-    debugger 
+  },
+  created(){
   }
 }
 </script>
