@@ -14,7 +14,7 @@ export default function (doc) {
   }
 
   if (doc.type === 'section') {
-    return '/vuejs-blog/' + doc.uid
+    return '/events/' + doc.uid
   }
 
   return 'not-found'

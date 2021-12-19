@@ -1,6 +1,6 @@
 {
-  "name": "vuejs-blog",
-  "description": "Sample blog built with Vue.js using Prismic headless CMS",
+  "name": "burezi-photo",
+  "description": "Burezi photography",
   "author": "Prismic",
   "scripts": {
     "serve": "vue-cli-service serve",

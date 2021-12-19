@@ -12,29 +12,25 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: { name: 'blog-home' }
+      redirect: { name: 'home' }
     },
     {
-      path: '/information',
-      redirect: { name: 'information' }
-    },
-    {
-      path: '/vuejs-blog',
-      name: 'blog-home',
+      path: '/home',
+      name: 'home',
       component: Welcome
     },
     {
-      path: '/vuejs-blog/:uid',
+      path: '/events/:uid',
       name: 'carousel',
       component: Carousel
     },
     {
-      path: '/vuejs-blog/not-found',
+      path: '/not-found',
       name: 'not-found',
       component: NotFound
     },
     {
-      path: '/vuejs-blog/information',
+      path: '/information',
       name: 'information',
       component: Information
     },
