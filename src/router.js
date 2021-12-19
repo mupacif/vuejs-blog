@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import NotFound from './views/NotFound.vue'
 import Carousel from './views/Carousel.vue'
 import Welcome from './views/Welcome.vue'
-
+import Information from './views/Information.vue'
 
 Vue.use(Router)
 
@@ -13,6 +13,10 @@ export default new Router({
     {
       path: '/',
       redirect: { name: 'blog-home' }
+    },
+    {
+      path: '/information',
+      redirect: { name: 'information' }
     },
     {
       path: '/vuejs-blog',
@@ -28,6 +32,11 @@ export default new Router({
       path: '/vuejs-blog/not-found',
       name: 'not-found',
       component: NotFound
+    },
+    {
+      path: '/vuejs-blog/information',
+      name: 'information',
+      component: Information
     },
     {
       path: '*',

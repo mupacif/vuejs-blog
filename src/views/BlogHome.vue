@@ -1,12 +1,12 @@
 <template>
-  <div class="home">
+  <div class="container-fluid overflow-hidden ">
   <!-- Vue conditional to check if there is any content in document -->
-  <div v-if="hasContent" class="page">
+  <div v-if="hasContent" class="row overflow-auto vh-100  ">
   
           <!-- Template for page description
           <p class="blog-description">{{ $prismic.richTextAsPlain(fields.description) }}</p> -->
-          <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
-                <div class="container-fluid ">
+          <nav class="col-12 col-sm-3   col-xl-2 navbar navbar-expand-sm navbar-light d-flex flex-sm-column  bg-sm-dark  " id="navbarTop">
+                <div class="container align-items-sm-start d-flex flex-sm-column mt-sm-5 ">
           
                      <router-link to="/"  class="navbar-brand"> {{ $prismic.richTextAsPlain(fields.headline) }}</router-link>
                     <button class="navbar-toggler" 
@@ -15,21 +15,25 @@
                     </button>
                 
                     <div class="collapse navbar-collapse" id="navbarCollapse">
-                      <ul class="navbar-nav">
+                      <ul class="navbar-nav  flex-sm-column">
                         <li class="nav-item" v-for="post in sections" :key="post.id" v-bind:post="post">
                           <router-link  class="nav-link" :to="linkResolver(post)">{{ $prismic.richTextAsPlain(post.data.name) }} </router-link>
+                        </li>
+                        <li class="nav-item" >
+                          <router-link  class="nav-link" to="/information">Information </router-link>
+                        </li>
+                        <li class="nav-item">
+                          <a :href=this.fields.instagram  class="nav-link" target="_blank" rel="noopener noreferrer">instagram</a>
                         </li>
                       </ul>  
                     </div>
                 </div>
           </nav> 
-          <div class="sidebar">
-            <li class="nav-item" v-for="post in sections" :key="post.id" v-bind:post="post">
-                          <router-link  class="nav-link" :to="linkResolver(post)">{{ $prismic.richTextAsPlain(post.data.name) }} </router-link>
-            </li>
-            </div>
-          <div class="home container">  
+          
+          <div class="col d-flex flex-column  home">  
+            <main class="row overflow-auto border">
                 <router-view  :key="$route.fullPath" />    
+              </main>
         </div>    
     </div>
     <div v-else class="home">
@@ -55,6 +59,7 @@ export default {
       fields: {
         headline: null,
         description: null,
+        instagram: null,
         image: null
       },
       posts: [],
@@ -78,6 +83,7 @@ export default {
           if (document) {
             this.fields.headline = document.data.name
             this.fields.description = document.data.decription_site
+            this.fields.instagram = document.data.instagram.url
             this.checkForContent()
 
           } else {
@@ -102,47 +108,13 @@ export default {
 </script>
 
 <style scoped>
-.page{
 
-}
-.sidebar {
-  margin: 0;
-  padding: 0;
-  width: 200px;
-  background-color: #f1f1f1;
-  position: fixed;
-  height: 100%;
-  overflow: auto;
-}
-.left-menu{
-  min-width : 300px;
-}
 .home {
   max-width: 100%;
-  margin: auto;
+  margin: 100px auto 0 auto;
   text-align: center;
 }
-.home .blog-avatar {
-  height: 140px;
-  width: 140px;
-  border-radius: 50%;
-  background-position: center;
-  background-size: cover;
-  margin: 1em auto;
-}
-.home .blog-description {
-  font-size: 18px;
-  color: #9A9A9A;
-  line-height: 30px;
-  margin-bottom: 3rem;
-  padding-bottom: 3rem;
-  font-family: 'Lato', sans-serif;
-  border-bottom: 1px solid #DADADA;
-}
-/* Media Queries */
-@media (max-width: 767px) {
-  .home {
-    padding: 0 20px;
-  }
+#navbarTop{
+  padding:0px !important;
 }
 </style>

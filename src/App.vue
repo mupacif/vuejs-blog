@@ -17,6 +17,5 @@ export default {
 </script>
 
 <style>
-@import "./assets/css/resetr.css";
-@import "./assets/css/common.css";
+
 </style>
