@@ -26,7 +26,6 @@ export default {
     }
   },
   created () {
-    debugger
     this.images = this.slices.items;
   
   }

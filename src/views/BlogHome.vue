@@ -17,7 +17,7 @@
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                       <ul class="navbar-nav  flex-sm-column">
                         <li class="nav-item" v-for="post in sections" :key="post.id" v-bind:post="post">
-                          <router-link  class="nav-link" :to="linkResolver(post)">{{ $prismic.richTextAsPlain(post.data.name) }} </router-link>
+                          <router-link  class="nav-link mx-1" :to="linkResolver(post)">{{ $prismic.richTextAsPlain(post.data.name) }} </router-link>
                         </li>
                         <li class="nav-item" >
                           <router-link  class="nav-link" to="/information">Information </router-link>
@@ -31,13 +31,17 @@
           </nav> 
           
           <div class="col d-flex flex-column  home">  
-            <main class="row overflow-auto border">
+            <main class="row overflow-auto">
                 <router-view  :key="$route.fullPath" />    
               </main>
-        </div>    
+                 <footer class="row mt-auto">
+                  <div class="col-6"> All images copyright.  </div>
+              </footer> 
+        </div>   
+   
     </div>
     <div v-else class="home">
-       <p> welcome xx </p>
+       <p> loading </p>
     </div>
   </div>
   <!-- If no content return message -->
