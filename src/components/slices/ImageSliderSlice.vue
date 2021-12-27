@@ -2,7 +2,7 @@
   <div id="carouselControls" class="carousel slide  carousel-dark" data-bs-ride="carousel" >
       <div class="carousel-inner">
         <div class="carousel-item" v-for="(img, index) in images" :key="'slice-' + index"  v-bind:class="{ active: index==0 }">
-            <img :src=img.image.url class="imgSized " alt="...">
+            <img :src=img.image.url class="img-fluid  imgSized " alt="...">
         </div>
       </div> 
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
@@ -42,7 +42,17 @@ export default {
 }
 
 .imgSized{
-  max-width: 500px;
+  max-width: 50%;
+  height: auto;
+}
+
+
+@media (max-width: 576px) {
+
+.imgSized{
+  max-width: 80%;
+  height: auto;
+}
 }
 
 </style>

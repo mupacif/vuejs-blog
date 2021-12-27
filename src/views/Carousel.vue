@@ -1,6 +1,9 @@
 <template>
-  <div class="main">
-     <slices-block :slices="slices"/> 
+  <div class="main row">
+     <slices-block lass="col" :slices="slices"/> 
+      <footer class="col">
+            <div > All images copyright.  </div>
+        </footer> 
   </div>
 </template>
 
@@ -26,6 +29,7 @@ export default {
   },
   methods: {
     getContent (uid) {
+      debugger
       //Query to get post content
       this.$prismic.client.getByUID('section', uid)
         .then((doc) => {
@@ -52,33 +56,18 @@ export default {
 </script>
 
 <style>
-.post-part.single a {
-  text-decoration: none;
-  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0.8) 75%);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0.8) 75%);
-  background-repeat: repeat-x;
-  background-size: 2px 2px;
-  background-position: 0 23px;
-}
-.blog-post-meta {
-  color: #9A9A9A;
-  font-family: 'Lato', sans-serif;
-  margin-bottom: 8px;
+
+.main {
+    position: relative;
 }
 
-/* Media Queries */
-@media (max-width: 767px) {
-  .post-part pre {
-    font-size: 14px;
-  }
-  .blog-post-meta {
-    font-size: 16px;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .blog-post-meta {
-    font-size: 16px;
-  }
-}
+    footer{
+      margin-top: 30px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      z-index: -900;
+    }
 </style>

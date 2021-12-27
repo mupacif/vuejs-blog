@@ -5,7 +5,7 @@
   
           <!-- Template for page description
           <p class="blog-description">{{ $prismic.richTextAsPlain(fields.description) }}</p> -->
-          <nav class="col-12 col-sm-3   col-xl-2 navbar navbar-expand-sm navbar-light d-flex flex-sm-column  bg-sm-dark" id="navbarTop">
+          <nav class="col-12 col-sm-3   col-xl-2 navbar navbar-expand-sm navbar-light d-flex flex-sm-column fixed-top bg-sm-dark" id="navbarTop">
                 <div class="container align-items-sm-start d-flex flex-sm-column m-2  mt-sm-5  justify-content-end ">
                     <div class="row">
                      <router-link to="/"  class="navbar-brand d-none d-sm-flex  "> {{ $prismic.richTextAsPlain(fields.headline) }}</router-link>
@@ -31,12 +31,12 @@
           </nav> 
           
           <div class="row d-flex flex-column  home">  
-            <main class="row overflow-auto">
-                <router-view  :key="$route.fullPath" />    
+            <main class="row align-items-start">
+                <router-view  :key="$route.fullPath" />  
+
+    
               </main>
-                 <footer class="row mt-auto">
-                  <div class="col-6"> All images copyright.  </div>
-              </footer> 
+
         </div>   
    
     </div>
@@ -118,9 +118,11 @@ export default {
 <style scoped>
 
 .home {
-  max-width: 100%;
+    position: relative;
+  width: 60%;
   margin: 100px auto 0 auto;
   text-align: center;
+  height: auto;
 }
 #navbarTop{
   padding:0px !important;
@@ -142,6 +144,21 @@ export default {
   .navbar-collaps{
    height: 100%;
   }
+  .home {
+  width: 80%;
+  margin: 100px auto 0 auto;
+  text-align: center;
+  height: auto;
+  }
+}
+footer{
+  margin-top: 30px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  z-index: -900;
 }
 
 </style>
