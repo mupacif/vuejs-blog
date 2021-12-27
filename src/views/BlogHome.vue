@@ -31,7 +31,7 @@
           </nav> 
           
           <div class="row d-flex flex-column  home">  
-            <main class="row align-items-start">
+            <main class="row align-items-start ">
                 <router-view  :key="$route.fullPath" />  
 
     

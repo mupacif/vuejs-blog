@@ -1,5 +1,5 @@
 <template>
-  <div class="main row">
+  <div class="main row   border" >
      <slices-block lass="col" :slices="slices"/> 
       <footer class="col">
             <div > {{ fields.copyright.text  }}  </div>
@@ -58,6 +58,7 @@ export default {
 
 .main {
     position: relative;
+    right:-30px;
 }
 footer{
   z-index: -900;
