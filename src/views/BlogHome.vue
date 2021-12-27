@@ -10,19 +10,19 @@
                     <div class="row">
                      <router-link to="/"  class="navbar-brand d-none d-sm-flex  "> {{ $prismic.richTextAsPlain(fields.headline) }}</router-link>
                     <button class="navbar-toggler" 
-                    type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" @click.stop="toggleNavbar()">
+                    type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" @click.stop="toggleNavbar(true)">
                       <span class="navbar-toggler-icon"></span>
                     </button>
                    </div>
                     <div class="collapse navbar-collapse " id="navbarCollapse"  v-bind:class="{ 'show': collapse }">
                       <ul class="navbar-nav  flex-sm-column  ">
-                        <li class="nav-item active mx-auto mx-sm-0" v-for="post in sections" :key="post.id" v-bind:post="post" @click.stop="toggleNavbar()">
+                        <li class="nav-item active mx-auto mx-sm-0" v-for="post in sections" :key="post.id" v-bind:post="post" @click.stop="toggleNavbar(false)">
                           <router-link  class="nav-link mx-1" :to="linkResolver(post)">{{ $prismic.richTextAsPlain(post.data.name) }} </router-link>
                         </li>
-                        <li class="nav-item   mx-auto mx-sm-0" @click.stop="toggleNavbar()" >
+                        <li class="nav-item   mx-auto mx-sm-0" @click.stop="toggleNavbar(false)" >
                           <router-link  class="nav-link"  to="/information">Information </router-link>
                         </li>
-                        <li class="nav-item   mx-auto mx-sm-0" @click.stop="toggleNavbar()">
+                        <li class="nav-item   mx-auto mx-sm-0" @click.stop="toggleNavbar(false)">
                           <a :href=this.fields.instagram  class="nav-link" target="_blank" rel="noopener noreferrer">instagram</a>
                         </li>
                       </ul>  
@@ -73,8 +73,8 @@ export default {
     }
   },
   methods: {
-    toggleNavbar() {
-      this.collapse = !this.collapse
+    toggleNavbar(open) {
+      this.collapse = open
     },
     getSections (){
         this.$prismic.client.query(
@@ -145,20 +145,12 @@ export default {
    height: 100%;
   }
   .home {
-  width: 80%;
+  width: 90%;
   margin: 100px auto 0 auto;
   text-align: center;
   height: auto;
   }
 }
-footer{
-  margin-top: 30px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  z-index: -900;
-}
+
 
 </style>
