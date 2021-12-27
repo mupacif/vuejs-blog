@@ -72,7 +72,7 @@ footer{
       writing-mode: vertical-rl;
       text-orientation: mixed;
       z-index: -900;
-      color: rgb(78, 78, 78);
+      color: rgb(180, 180, 180);
     }
 
 }
