@@ -1,5 +1,5 @@
 <template>
-  <div class="main row   border" >
+  <div class="main row " >
      <slices-block lass="col" :slices="slices"/> 
       <footer class="col">
             <div > {{ fields.copyright.text  }}  </div>
