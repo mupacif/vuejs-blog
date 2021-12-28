@@ -30,8 +30,8 @@
                 </div>
           </nav> 
           
-          <div class="row d-flex flex-column  home border ">  
-            <main class="row align-items-start my-auto ">
+          <div class="row d-flex flex-column  home  ">  
+            <main class="col my-auto ">
                 <router-view  :key="$route.fullPath" />  
 
     
@@ -119,10 +119,10 @@ export default {
 
 .home {
     position: relative;
-  width: 100%;
-
+  width: 50%;
+ margin: 100px auto 0 auto;
   text-align: center;
-  height: 100%;
+  height: auto;
 }
 #navbarTop{
   padding:0px !important;
@@ -146,6 +146,18 @@ export default {
   }
   .home {
   width: 100%;
+  margin: 100px auto 0 auto;
+  text-align: center;
+  height: auto;
+  }
+}
+
+
+
+@media (max-width: 992px) {
+
+  .home {
+  width: 80%;
   margin: 100px auto 0 auto;
   text-align: center;
   height: auto;

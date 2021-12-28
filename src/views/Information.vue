@@ -1,6 +1,6 @@
 <template>
   <!-- Vue conditional to check if there is any content in document -->
-  <div >
+  <div  >
           <prismic-rich-text class="textslice" :field="information"/>
   </div>
 </template>
